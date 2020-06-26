@@ -74,4 +74,32 @@
                 }
             })();
 
+
+            // 导航菜单 tab 聚焦时展开下拉菜单
+            (function () {
+                $('#typecho-nav-list').find('.parent a').focus(function() {
+                    $('#typecho-nav-list').find('.child').hide();
+                    $(this).parents('.root').find('.child').show();
+                });
+                $('.operate').find('a').focus(function() {
+                    $('#typecho-nav-list').find('.child').hide();
+                });
+            })();
+
+
+            if ($('.typecho-login').length == 0) {
+                $('a').each(function () {
+                    var t = $(this), href = t.attr('href');
+
+                    if ((href && href[0] == '#')
+                        || /^<?php echo preg_quote($options->adminUrl, '/'); ?>.*$/.exec(href) 
+                            || /^<?php echo substr(preg_quote(Typecho_Common::url('s', $options->index), '/'), 0, -1); ?>action\/[_a-zA-Z0-9\/]+.*$/.exec(href)) {
+                        return;
+                    }
+
+                    t.attr('target', '_blank');
+                });
+            }
+        });
+    })();
 </script>

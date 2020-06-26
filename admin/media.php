@@ -2,7 +2,6 @@
 include 'common.php';
 include 'header.php';
 include 'menu.php';
-include 'TUi.php';
 
 $phpMaxFilesize = function_exists('ini_get') ? trim(ini_get('upload_max_filesize')) : 0;
 
@@ -12,42 +11,78 @@ if (preg_match("/^([0-9]+)([a-z]{1,2})$/i", $phpMaxFilesize, $matches)) {
 
 Typecho_Widget::widget('Widget_Contents_Attachment_Edit')->to($attachment);
 ?>
+<style>
+    .typecho-option li input,textarea{
+        width: 100%;
+    }
+    .edit-media{
+        margin-top: -27px;
+    }
+    .card-text{
+        margin-top: -9px!important;
+    }
+</style>
+<?php include 'menu_title.php'; ?>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card-wrapper">
+                <div class="card">
+                    <!-- Card image -->
+                    <?php if ($attachment->attachment->isImage): ?>
+                        <img class="card-img-top" src="<?php $attachment->attachment->url(); ?>" alt="<?php $attachment->attachment->name(); ?>">
+                    <?php endif; ?>
 
 
-<div class="row">
-	<div class="col-md-12 grid-margin stretch-card">
-		<div class="card">
-		  <div class="card-body" role="main">
-			<h4 class="card-title"><?php include 'page-title.php'; ?></h4>
-			<div class="dropdown-divider"></div>
-			<div class="col-mb-12 col-tb-8" role="main">
-				<?php if ($attachment->attachment->isImage): ?>
-				<p><img src="<?php $attachment->attachment->url(); ?>" alt="<?php $attachment->attachment->name(); ?>" class="typecho-attachment-photo" /></p>
-				<?php endif; ?>
-				
-				<p>
-					<?php $mime = Typecho_Common::mimeIconType($attachment->attachment->mime); ?>
-					<i class="mime-<?php echo $mime; ?>"></i>
-					<a href=""><strong><?php $attachment->attachment->name(); ?></strong></a>
-					<span><?php echo number_format(ceil($attachment->attachment->size / 1024)); ?> Kb</span>
-				</p>
 
-				<p>
-					<input id="attachment-url" type="text" class="mono w-100" value="<?php $attachment->attachment->url(); ?>" readonly />
-				</p>
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <p  class="card-text mt-4">
+                            <?php $mime = Typecho_Common::mimeIconType($attachment->attachment->mime); ?>
+                            <i class="mime-<?php echo $mime; ?>"></i>
+                            <a href=""><strong><?php $attachment->attachment->name(); ?></strong></a>
+                            <span><?php echo number_format(ceil($attachment->attachment->size / 1024)); ?> Kb</span>
+                        </p>
 
-				<div id="upload-panel" class="p">
-					<div class="upload-area" draggable="true"><?php _e('拖放文件到这里<br>或者 %s选择文件上传%s', '<a href="###" class="upload-file">', '</a>'); ?></div>
-					<ul id="file-list"></ul>
-				</div>
-			</div>
-			<div class="col-mb-12 col-tb-4 edit-media" role="form">
-				<?php $attachment->form()->render(); ?>
-			</div>
-		  </div>
-		</div>
-	</div>
+                        <p  class="card-text mt-4">
+                            <input id="attachment-url" type="text" class="mono w-100" value="<?php $attachment->attachment->url(); ?>" readonly />
+                        </p>
+
+                        <div id="upload-panel" class="p card-text mt-4">
+                            <div class="upload-area " style="font-size: .85rem;" draggable="true"><?php _e('拖放文件到这里<br>或者 %s选择文件上传%s', '<a href="###" class="upload-file">', '</a>'); ?></div>
+                            <ul id="file-list"></ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card-wrapper">
+                <div class="card">
+                    <!-- Card header -->
+                    <div id="edit-secondary" class="" role="complementary">
+                        <ul class="typecho-option-tabs clearfix card-header">
+                            <?php include 'page-title.php'; ?>
+                        </ul>
+
+
+                        <div id="tab-advance" class="tab-content card-body">
+                            <div class="col-mb-12 col-tb-12 edit-media" role="form">
+                                <?php $attachment->form()->render(); ?>
+                            </div>
+                        </div><!-- end #tab-advance -->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <?php
 include 'copyright.php';
 include 'common-js.php';

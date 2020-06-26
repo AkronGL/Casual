@@ -2,7 +2,6 @@
 include 'common.php';
 include 'header.php';
 include 'menu.php';
-include 'TUi.php';
 
 $errors = $security->systemCheck();
 ?>

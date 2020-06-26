@@ -1,58 +1,35 @@
 <?php
 include 'common.php';
-
 if ($user->hasLogin()) {
     $response->redirect($options->adminUrl);
 }
 $rememberName = htmlspecialchars(Typecho_Cookie::get('__typecho_remember_name'));
 Typecho_Cookie::delete('__typecho_remember_name');
 
-$bodyClass = 'body-100';
+$bodyClass ='body-100';
 
 include 'header.php';
 ?>
 <style type="text/css">
+
 body {
-    font-family: roboto,sans-serif;
-    text-align: center;
-    background-image: url(http://p5.qhimg.com/bdm/960_593_0/t01573b4f467fdf51e2.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+text-align: center;
+     /*替换背景*/
+    background-image: url(https://cdn.jsdelivr.net/gh/Catalpablog/handsome/img/XBG.webp); 
     background-position: center;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-}
-.typecho-login {
-    background: rgba(255, 255, 255, 0.68);
-    display: block;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-top: 20vh;
-  -moz-box-shadow: 0 0 10px #ffffff;
-    box-shadow: 0 0 10px #ffffff;
-}
-.primary {
-background-color: #a1bee0;/*按钮颜色重写*/
-    }
-.primary:hover {
-background-color: #6b91c0;/*按钮hover颜色重写*/
-}
-.typecho-login .more-link {
-    margin-top: 0;
-    color: #bbb;
-}
-.typecho-login h1 {
-    margin: 10px 0 0;
 }
 </style>
-<!---MDUI核心-->
-<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
-<script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
-<div class="typecho-login-wrap">
-    <div class="typecho-login">
-        <h1>Login</h1>
+<!--手机不加载canvas-->
+<script>
+if (screen && screen.width >768 ) {
+document.write('<script   src="https://cdn.jsdelivr.net/gh/Catalpablog/handsome/js/canvas-nest.min.js" type="text/javascript"><\/script>');
+}
+</script>
+<!--canvas结束-->
+<div style="display: table;margin: 0 auto;height: 100%;">
+    <div style="display: block;padding: 30px 15px;border-radius: 15px;margin-top: 20vh;box-shadow: 0 0 10px #00000040;width: 350px;">
+        <!--登录界面头像-->
+        <img style="border-radius:50px;width: 110px;" src="https://q2.qlogo.cn/headimg_dl?dst_uin=1034630181&spec=100">
         <form action="<?php $options->loginAction(); ?>" method="post" name="login" role="form"><br>
             <p>
                 <label for="name" class="sr-only"><?php _e('用户名'); ?></label>
@@ -63,16 +40,17 @@ background-color: #6b91c0;/*按钮hover颜色重写*/
                 <input type="password" id="password" name="password" class="text-l w-100" placeholder="<?php _e('密码'); ?>" />
             </p>
             <p class="submit">
-                <button type="submit" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-blue mdui-text-color-white-text"><?php _e('登录'); ?></button>
+                <button type="submit" style="display: inline-block;background-color: #008eff;border: none;color: #ffffff;font-size: 25px;padding: 5px;width: 110px;border-radius: 10px;"><?php _e('登录'); ?></button>
                 <input type="hidden" name="referer" value="<?php echo htmlspecialchars($request->get('referer')); ?>" />
             </p>
-            <p>
-            	<label for="remember"><input type="checkbox"/> <?php _e('下次自动登录'); ?></label>
-            
-            </p>
+              <div class="custom-control custom-control-alternative custom-checkbox">
+                 <input class="custom-control-input checkbox" name="remember" id=" customCheckLogin" type="checkbox" value="1">
+                   <label class="custom-control-label" for=" customCheckLogin">
+                       <span class="text-muted"><?php _e('下次自动登录'); ?></span>
+                          </label>
+                            </div>
         </form>
-        
-        <p class="more-link">
+        <p class="more-link" style="margin-top: 10px;">
             <a href="<?php $options->siteUrl(); ?>"><?php _e('返回首页'); ?></a>
             <?php if($options->allowRegister): ?>
             &bull;

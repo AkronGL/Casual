@@ -339,7 +339,7 @@ class Widget_Menu extends Typecho_Widget
                 echo "<li" . (!empty($classes) ? ' class="' . implode(' ', $classes) . '"' : NULL) .
                     "><a href=\"" . ($key == $this->_currentParent && $inKey == $this->_currentChild ? $this->_currentUrl : $inNode[2]) . "\">{$inNode[0]}</a></li>";
             }
-//更多资源请关注：好源码分享网:myhaochi.com
+
             echo "</ul></ul>";
         }
     }
