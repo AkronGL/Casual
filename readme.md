@@ -19,3 +19,23 @@
 8.外链自动添加nofollow属性
 
 9.外链自动在新标签打开
+
+10.增加按评论数排序，随机排序，按字数排序文章的接口，调用示例：
+
+按评论数排序
+
+>  <?php $this->widget('Widget_Contents_Post_Comments','pageSize=10')->to($Comments);while($Comments->next()): ?>
+> 
+> <?php endwhile; ?>
+
+随机排序
+
+> <?php $this->widget('Widget_Contents_Post_Rand','pageSize=10')->to($Rand);while($Rand->next()): ?>
+>
+> <?php endwhile; ?>
+
+按字数排序
+
+> <?php $this->widget('Widget_Contents_Post_Size','pageSize=10')->to($Size);while($Size->next()): ?>
+> 
+> <?php endwhile; ?>
