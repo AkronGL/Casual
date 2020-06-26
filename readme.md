@@ -25,17 +25,20 @@
 按评论数排序
 
 >  <?php $this->widget('Widget_Contents_Post_Comments','pageSize=10')->to($Comments);while($Comments->next()): ?>
-> 
+
+
 > <?php endwhile; ?>
 
 随机排序
 
 > <?php $this->widget('Widget_Contents_Post_Rand','pageSize=10')->to($Rand);while($Rand->next()): ?>
->
+
+
 > <?php endwhile; ?>
 
 按字数排序
 
 > <?php $this->widget('Widget_Contents_Post_Size','pageSize=10')->to($Size);while($Size->next()): ?>
-> 
+
+
 > <?php endwhile; ?>
