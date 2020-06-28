@@ -278,8 +278,8 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                                         }
 
                                         /** 全局变量 */
-                                        $installDb->query($installDb->insert('table.options')->rows(array('name' => 'theme', 'user' => 0, 'value' => 'default')));
-                                        $installDb->query($installDb->insert('table.options')->rows(array('name' => 'theme:default', 'user' => 0, 'value' => 'a:2:{s:7:"logoUrl";N;s:12:"sidebarBlock";a:5:{i:0;s:15:"ShowRecentPosts";i:1;s:18:"ShowRecentComments";i:2;s:12:"ShowCategory";i:3;s:11:"ShowArchive";i:4;s:9:"ShowOther";}}')));
+                                        $installDb->query($installDb->insert('table.options')->rows(array('name' => 'theme', 'user' => 0, 'value' => 'Spring')));
+                                        $installDb->query($installDb->insert('table.options')->rows(array('name' => 'theme:default', 'user' => 0, 'value' => 'a:17:{s:5:"bgUrl";s:118:"https://www.bing.com/th?id=OHR.Lunarnewyeareve2020_ZH-CN1514309048_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=HpEdgeAn";s:4:"Logo";s:10:"网站logo";s:6:"ititle";s:12:"首页标题";s:8:"Subtitle";N;s:5:"beian";N;s:5:"qiniu";N;s:5:"weibo";s:1:"#";s:8:"Gravatar";N;s:3:"cdn";N;s:5:"APPID";N;s:6:"APPKEY";N;s:10:"serverURLs";N;s:6:"alipay";N;s:4:"wpay";N;s:6:"github";s:1:"#";s:7:"QQGROUP";s:1:"#";s:7:"JConfig";N;}')));
                                         $installDb->query($installDb->insert('table.options')->rows(array('name' => 'timezone', 'user' => 0, 'value' => _t('28800'))));
                                         $installDb->query($installDb->insert('table.options')->rows(array('name' => 'lang', 'user' => 0, 'value' => $lang)));
                                         $installDb->query($installDb->insert('table.options')->rows(array('name' => 'charset', 'user' => 0, 'value' => _t('UTF-8'))));
