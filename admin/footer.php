@@ -5,11 +5,11 @@
 
 
 
-    <script src="./simple/js/bootstrap.bundle.min.js"></script>
-    <script src="./simple/js/js.cookie.js"></script>
-    <script src="./simple/js/jquery.scrollbar.min.js"></script>
-    <script src="./simple/js/jquery-scrollLock.min.js"></script>
-    <script src="./simple/js/jquery.lavalamp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/js/js.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/js/jquery.scrollbar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/js/jquery-scrollLock.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/js/jquery.lavalamp.min.js"></script>
     <!-- Optional JS -->
 <!--    <script src="./simple/js/moment.min.js"></script>-->
 <!--    <script src="./simple/js/fullcalendar.min.js"></script>-->

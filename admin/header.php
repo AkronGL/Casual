@@ -27,16 +27,16 @@ $header = Typecho_Plugin::factory('admin/header.php')->header($header);
     <meta name="robots" content="noindex, nofollow">
     <?php echo $header; ?>
     <!-- Argon CSS -->
-    <script src="./simple/js/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/js/jquery.min.js"></script>
     <!-- Favicon -->
-        <link rel="stylesheet" href="./simple/css/nucleo.css" type="text/css">
-    <link rel="stylesheet" href="./simple/css/all.min.css" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/css/all.min.css" type="text/css">
     <!-- Page plugins -->
-    <link rel="stylesheet" href="./simple/css/fullcalendar.min.css">
-    <link rel="stylesheet" href="./simple/css/sweetalert2.min.css">
-    <link rel="stylesheet" href="./simple/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="./simple/css/argon.min.css?v=1.0.0" type="text/css">
-    <link rel="stylesheet" href="./simple/css/admin-css.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/css/fullcalendar.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/css/argon.min.css?v=1.0.0" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/qufengwu/cdn2@master/simple/css/admin-css.css" type="text/css">
 
 </head>
 <body>
