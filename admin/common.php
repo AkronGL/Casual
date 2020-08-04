@@ -25,3 +25,4 @@ Typecho_Widget::widget('Widget_Menu')->to($menu);
 /** 初始化上下文 */
 $request = $options->request;
 $response = $options->response;
+

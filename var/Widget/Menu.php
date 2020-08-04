@@ -295,24 +295,20 @@ class Widget_Menu extends Typecho_Widget
 
     /**
      * 输出父级菜单
+     * 对x-admin进行支持修改
      *
      * @access public
      * @return string
      */
-    public function output($class = 'focus', $childClass = 'focus' ,$sign=false)
-    {
-        if($sign){
-            return array('menu'=>$this->_menu,'currentParent'=>$this->_currentParent,'currentChild'=>$this->_currentChild);
-        }
+    public function output($class = '', $childClass = '')
+    {   echo "<ul id=\"nav\">";
         foreach ($this->_menu as $key => $node) {
             if (!$node[1] || !$key) {
                 continue;
             }
 
-
-            echo "<ul class=\"root" . ($key == $this->_currentParent ? ' ' . $class : NULL) 
-                . "\"><li class=\"parent\"><a href=\"{$node[2]}\">{$node[0]}</a>"
-                . "</li><ul class=\"child\">";
+            echo "<li><a href=\"#\">{$node[0]}</a>"
+                . "<ul class=\"sub-menu\">";
 
             $last = 0;
             foreach ($node[3] as $inKey => $inNode) {
@@ -336,12 +332,18 @@ class Widget_Menu extends Typecho_Widget
                 if ($inKey == $last) {
                     $classes[] = 'last';
                 }
+                if($inNode[0]=="概要"){
+                    echo "";
+                }
+                else{
                 echo "<li" . (!empty($classes) ? ' class="' . implode(' ', $classes) . '"' : NULL) .
-                    "><a href=\"" . ($key == $this->_currentParent && $inKey == $this->_currentChild ? $this->_currentUrl : $inNode[2]) . "\">{$inNode[0]}</a></li>";
+                    "><a _href=\"" . ($key == $this->_currentParent && $inKey == $this->_currentChild ? $this->_currentUrl : $inNode[2]) . "\"><cite>{$inNode[0]}</cite></a></li>";
+                }
             }
 
-            echo "</ul></ul>";
+            echo "</ul></li>";
         }
+        echo "</ul>";
     }
 }
 

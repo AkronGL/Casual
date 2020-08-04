@@ -5,81 +5,7 @@
 <script src="<?php $options->adminStaticUrl('js', 'pagedown-extra.js?v=' . $suffixVersion); ?>"></script>
 <script src="<?php $options->adminStaticUrl('js', 'diff.js?v=' . $suffixVersion); ?>"></script>
 <script>
-$(document).ready(function () {
-    var textarea = $('#text'),
-        toolbar = $('<div class="editor" id="wmd-button-bar" />').insertBefore(textarea.parent()),
-        preview = $('<div id="wmd-preview" class="wmd-hidetab" />').insertAfter('.editor');
 
-    var options = {}, isMarkdown = <?php echo intval($content->isMarkdown || !$content->have()); ?>;
-
-    options.strings = {
-        bold: '<?php _e('加粗'); ?> <strong> Ctrl+B',
-        boldexample: '<?php _e('加粗文字'); ?>',
-            
-        italic: '<?php _e('斜体'); ?> <em> Ctrl+I',
-        italicexample: '<?php _e('斜体文字'); ?>',
-
-        link: '<?php _e('链接'); ?> <a> Ctrl+L',
-        linkdescription: '<?php _e('请输入链接描述'); ?>',
-
-        quote:  '<?php _e('引用'); ?> <blockquote> Ctrl+Q',
-        quoteexample: '<?php _e('引用文字'); ?>',
-
-        code: '<?php _e('代码'); ?> <pre><code> Ctrl+K',
-        codeexample: '<?php _e('请输入代码'); ?>',
-
-        image: '<?php _e('图片'); ?> <img> Ctrl+G',
-        imagedescription: '<?php _e('请输入图片描述'); ?>',
-
-        olist: '<?php _e('数字列表'); ?> <ol> Ctrl+O',
-        ulist: '<?php _e('普通列表'); ?> <ul> Ctrl+U',
-        litem: '<?php _e('列表项目'); ?>',
-
-        heading: '<?php _e('标题'); ?> <h1>/<h2> Ctrl+H',
-        headingexample: '<?php _e('标题文字'); ?>',
-
-        hr: '<?php _e('分割线'); ?> <hr> Ctrl+R',
-        more: '<?php _e('摘要分割线'); ?> <!--more--> Ctrl+M',
-
-        undo: '<?php _e('撤销'); ?> - Ctrl+Z',
-        redo: '<?php _e('重做'); ?> - Ctrl+Y',
-        redomac: '<?php _e('重做'); ?> - Ctrl+Shift+Z',
-
-        fullscreen: '<?php _e('全屏'); ?> - Ctrl+J',
-        exitFullscreen: '<?php _e('退出全屏'); ?> - Ctrl+E',
-        fullscreenUnsupport: '<?php _e('此浏览器不支持全屏操作'); ?>',
-
-        imagedialog: '<p><b><?php _e('插入图片'); ?></b></p><p style="font-size: .85rem;"><?php _e('请在下方的输入框内输入要插入的远程图片地址'); ?></p><p><?php _e('您也可以使用附件功能插入上传的本地图片'); ?></p>',
-        linkdialog: '<p><b><?php _e('插入链接'); ?></b></p><p><?php _e('请在下方的输入框内输入要插入的链接地址'); ?></p>',
-
-        ok: '<?php _e('确定'); ?>',
-        cancel: '<?php _e('取消'); ?>',
-
-        help: '<?php _e('Markdown语法帮助'); ?>'
-    };
-
-    var converter = new HyperDown(),
-        editor = new Markdown.Editor(converter, '', options),
-        diffMatch = new diff_match_patch(), last = '', preview = $('#wmd-preview'),
-        mark = '@mark' + Math.ceil(Math.random() * 100000000) + '@',
-        span = '<span class="diff" />',
-        cache = {};
-
-    // 修正白名单
-    converter.enableHtml(true);
-    converter.commonWhiteList += '|img|cite|embed|iframe';
-    converter.specialWhiteList = $.extend(converter.specialWhiteList, {
-        'ol'            :  'ol|li',
-        'ul'            :  'ul|li',
-        'blockquote'    :  'blockquote',
-        'pre'           :  'pre|code'
-    });
-
-    converter.hook('beforeParseInline', function (html) {
-        return html.replace(/^\s*<!\-\-\s*more\s*\-\->\s*$/, function () {
-            return converter.makeHolder('<!--more-->');
-        });
-    });
 
     // 自动跟随
     converter.hook('makeHtml', function (html) {
@@ -333,4 +259,3 @@ $(document).ready(function () {
 });
 </script>
 <?php endif; ?>
-

@@ -505,11 +505,7 @@ class HyperDown
                 );
                 $url = $self->escapeBracket($matches[2]);
                 $url = $self->cleanUrl($url);
-                return $self->makeHolder("<a href=\"{$url}\">{$escaped}</a>");if (strstr($url,'//www.moewah.com') == false ) {
-                    return $self->makeHolder("<a href=\"{$url}\" target=\"_blank\" rel=\"nofollow\">{$escaped}</a>");
-                    } else {
-                    return $self->makeHolder("<a href=\"{$url}\" target=\"_blank\">{$escaped}</a>");
-                    }
+                return $self->makeHolder("<a href=\"{$url}\">{$escaped}</a>");
             },
             $text
         );

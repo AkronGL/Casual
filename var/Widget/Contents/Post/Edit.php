@@ -536,7 +536,9 @@ class Widget_Contents_Post_Edit extends Widget_Abstract_Contents implements Widg
                     }
                 }
 
-                $item->value($fields->{$name});
+                if (isset($fields->{$name})) {
+                    $item->value($fields->{$name});
+                }
 
                 $elements = $item->container->getItems();
                 array_shift($elements);
@@ -725,7 +727,7 @@ class Widget_Contents_Post_Edit extends Widget_Abstract_Contents implements Widg
     public function writePost()
     {
         $contents = $this->request->from('password', 'allowComment',
-            'allowPing', 'allowFeed', 'slug', 'tags', 'text', 'order','visibility');
+            'allowPing', 'allowFeed', 'slug', 'tags', 'text', 'visibility');
 
         $contents['category'] = $this->request->getArray('category');
         $contents['title'] = $this->request->get('title', _t('未命名文档'));

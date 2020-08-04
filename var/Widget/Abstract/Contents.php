@@ -73,7 +73,7 @@ class Widget_Abstract_Contents extends Widget_Abstract
     {
         $plainTxt = str_replace("\n", '', trim(strip_tags($this->excerpt)));
         $plainTxt = $plainTxt ? $plainTxt : $this->title;
-        return Typecho_Common::subStr($plainTxt, 0, 150, '...');
+        return Typecho_Common::subStr($plainTxt, 0, 100, '...');
     }
 
     /**
@@ -753,7 +753,7 @@ class Widget_Abstract_Contents extends Widget_Abstract
             <input type="submit" class="submit" value="' . _t('提交') . '" /></p>' .
             '</form>';
 
-            /* $value['title'] = _t('此内容被密码保护'); */
+            $value['title'] = _t('此内容被密码保护');
             $value['tags'] = array();
             $value['commentsNum'] = 0;
         }
