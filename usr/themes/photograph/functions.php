@@ -48,27 +48,29 @@ function getAttachImg($cid) {
 }
 
 //获取文章附件图
-function getPostAttImg($obj) {
-	preg_match_all( "/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", $obj->content, $matches);
-	$atts = array();
-	if(isset($matches[1][0])) {
-		for($i = 0; $i < count($matches[1]); $i++) {
-			$atts[] = array('name' => $obj->title.' ['.($i + 1).']', 'url' => $matches[1][$i]);
-		}
-    }
-	return  count($atts) ? $atts : NULL;
+function getPostImg($obj) {
+	$imgs = array();
+	if($obj->fields->src == 0) {
+		$imgs = getPostAttImg($obj);
+	}elseif($obj->fields->src == 1) {
+		$imgs = getPostHtmImg($obj);
+	}elseif($obj->fields->src == 2) {
+		$imgs = array_merge(getPostHtmImg($obj), getPostAttImg($obj));
+	}
+	return $imgs;
 }
 
 //获取文章内容图
-function getPostHtmImg($obj) {
-	preg_match_all( "/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", $obj->content, $matches);
-	$atts = array();
-	if(isset($matches[1][0])) {
-		for($i = 0; $i < count($matches[1]); $i++) {
-			$atts[] = array('name' => $obj->title.' ['.($i + 1).']', 'url' => $matches[1][$i]);
-		}
-    }
-	return  count($atts) ? $atts : NULL;
+function getPostImg($obj) {
+	$imgs = array();
+	if($obj->fields->src == 0) {
+		$imgs = getPostAttImg($obj);
+	}elseif($obj->fields->src == 1) {
+		$imgs = getPostHtmImg($obj);
+	}elseif($obj->fields->src == 2) {
+		$imgs = array_merge(getPostHtmImg($obj), getPostAttImg($obj));
+	}
+	return $imgs;
 }
 
 //获取文章图片 整合 getPostAttImg() 与 getPostHtmImg()
